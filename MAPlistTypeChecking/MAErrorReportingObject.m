@@ -14,6 +14,7 @@
 
 @implementation MAErrorReportingObject {
     id _parent;
+    NSMutableArray *_errors;
 }
 
 + (id)wrapObject: (id)object parent: (id)parent
@@ -39,6 +40,23 @@
 - (void)setError: (NSError *)error
 {
     [_parent setError: error];
-    _error = error;
+    _errors = [NSMutableArray arrayWithObjects: error, nil];
 }
+
+- (NSError *)error {
+    return [_errors lastObject];
+}
+
+- (void)addError: (NSError *)error {
+    [_parent addError: error];
+    if(!_errors)
+        _errors = [NSMutableArray array];
+    [_errors addObject: error];
+}
+
+- (NSArray *)errors
+{
+    return _errors;
+}
+
 @end

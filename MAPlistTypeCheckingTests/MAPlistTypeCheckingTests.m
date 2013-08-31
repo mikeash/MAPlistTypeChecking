@@ -6,13 +6,16 @@
 //  Copyright (c) 2013 mikeash. All rights reserved.
 //
 
-#import "MAPlistTypeCheckingTests.h"
+#import <SenTestingKit/SenTestingKit.h>
 
 #import "MAErrorReportingArray.h"
 #import "MAErrorReportingDictionary.h"
 #import "MAErrorReportingObject.h"
 #import "NSObject+MAErrorReporting.h"
 
+
+@interface MAPlistTypeCheckingTests : SenTestCase
+@end
 
 @implementation MAPlistTypeCheckingTests {
     MAErrorReportingDictionary *_dict;
@@ -131,6 +134,32 @@
     obj = [NSString ma_castRequiredObject: _dict[@"dictionary"][@"array"][1]];
     STAssertNil(obj, @"Incorrect type should produce a nil object");
     [self assertErrorCode: MAErrorReportingContainersWrongValueType];
+}
+
+- (void)testErrorAccumulation
+{
+    [NSString ma_castRequiredObject: _dict[@"doesnotexist"]];
+    [NSString ma_castRequiredObject: _dict[@"dictionary"][@"doesnotexist"]];
+    [NSString ma_castOptionalObject: _dict[@"doesnotexist"]];
+    [NSNumber ma_castRequiredObject: _dict[@"string"]];
+    [NSArray ma_castOptionalObject: _dict[@"string"]];
+    [NSString ma_castRequiredObject: _dict[@"number"]];
+    [NSData ma_castRequiredObject: _dict[@"dictionary"]];
+    [NSSet ma_castRequiredObject: _dict[@"dictionary"][@"string"]];
+    [NSNumber ma_castRequiredObject: _dict[@"dictionary"][@"array"]];
+    [NSNumber ma_castRequiredObject: _dict[@"dictionary"][@"array"][0]];
+    [NSString ma_castRequiredObject: _dict[@"dictionary"][@"array"][1]];
+    
+    NSArray *errors = [_dict errors];
+    STAssertEquals([errors count], (NSUInteger)10, @"Wrong number of errors");
+    int i = 0;
+    for(NSError *error in errors)
+    {
+        STAssertEqualObjects([error domain], MAErrorReportingContainersErrorDomain, @"Incorrect error domain");
+        NSInteger code = i < 2 ? MAErrorReportingContainersMissingRequiredKey : MAErrorReportingContainersWrongValueType;
+        STAssertEquals([error code], code, @"Incorrect error code at index %d error is %@, errors are %@", i, error, errors);
+        i++;
+    }
 }
 
 @end

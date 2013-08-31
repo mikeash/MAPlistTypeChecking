@@ -14,4 +14,7 @@
 
 @property (nonatomic) NSError *error;
 
+- (void)addError: (NSError *)error;
+- (NSArray *)errors;
+
 @end

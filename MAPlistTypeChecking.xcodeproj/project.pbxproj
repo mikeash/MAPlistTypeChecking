@@ -52,7 +52,6 @@
 		C2848E1A17D29E2000E08F82 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C2848E1D17D29E2000E08F82 /* MAPlistTypeCheckingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MAPlistTypeCheckingTests-Info.plist"; sourceTree = "<group>"; };
 		C2848E1F17D29E2000E08F82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C2848E2117D29E2000E08F82 /* MAPlistTypeCheckingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAPlistTypeCheckingTests.h; sourceTree = "<group>"; };
 		C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAPlistTypeCheckingTests.m; sourceTree = "<group>"; };
 		C2D571B917D181B700913C6F /* MAPlistTypeChecking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MAPlistTypeChecking; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D571BC17D181B700913C6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,7 +92,6 @@
 		C2848E1B17D29E2000E08F82 /* MAPlistTypeCheckingTests */ = {
 			isa = PBXGroup;
 			children = (
-				C2848E2117D29E2000E08F82 /* MAPlistTypeCheckingTests.h */,
 				C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */,
 				C2848E1C17D29E2000E08F82 /* Supporting Files */,
 			);
@@ -143,12 +141,12 @@
 			isa = PBXGroup;
 			children = (
 				C2D571BF17D181B800913C6F /* main.m */,
+				C2848E0717D18F0E00E08F82 /* MAErrorReportingArray.h */,
+				C2848E0817D18F0E00E08F82 /* MAErrorReportingArray.m */,
 				C2848E0117D18D9E00E08F82 /* MAErrorReportingDictionary.h */,
 				C2848E0217D18D9E00E08F82 /* MAErrorReportingDictionary.m */,
 				C2848E0417D18DE500E08F82 /* MAErrorReportingObject.h */,
 				C2848E0517D18DE500E08F82 /* MAErrorReportingObject.m */,
-				C2848E0717D18F0E00E08F82 /* MAErrorReportingArray.h */,
-				C2848E0817D18F0E00E08F82 /* MAErrorReportingArray.m */,
 				C2848E0A17D18F8E00E08F82 /* NSObject+MAErrorReporting.h */,
 				C2848E0B17D18F8E00E08F82 /* NSObject+MAErrorReporting.m */,
 			);

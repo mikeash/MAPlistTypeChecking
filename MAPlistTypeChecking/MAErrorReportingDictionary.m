@@ -14,6 +14,7 @@
 @implementation MAErrorReportingDictionary {
     id _parent;
     NSDictionary *_innerDictionary;
+    NSMutableArray *_errors;
 }
 
 - (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary
@@ -44,7 +45,23 @@
 - (void)setError: (NSError *)error
 {
     [_parent setError: error];
-    _error = error;
+    _errors = [NSMutableArray arrayWithObjects: error, nil];
+}
+
+- (NSError *)error {
+    return [_errors lastObject];
+}
+
+- (void)addError: (NSError *)error {
+    [_parent addError: error];
+    if(!_errors)
+        _errors = [NSMutableArray array];
+    [_errors addObject: error];
+}
+
+- (NSArray *)errors
+{
+    return _errors;
 }
 
 @end

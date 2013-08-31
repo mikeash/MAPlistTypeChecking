@@ -17,4 +17,7 @@
 @property (nonatomic) NSError *error;
 @property (readonly) id wrappedObject;
 
+- (void)addError: (NSError *)error;
+- (NSArray *)errors;
+
 @end

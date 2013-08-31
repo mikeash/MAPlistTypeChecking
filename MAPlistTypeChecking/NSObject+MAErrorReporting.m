@@ -23,20 +23,20 @@ NSString * const MAErrorReportingContainersErrorDomain = @"MAErrorReportingConta
     
     if(required && !value)
     {
-        if([obj respondsToSelector: @selector(setError:)])
+        if([obj respondsToSelector: @selector(addError:)])
         {
             NSError *error = [NSError errorWithDomain: MAErrorReportingContainersErrorDomain code: MAErrorReportingContainersMissingRequiredKey userInfo: nil];
-            [obj setError: error];
+            [obj addError: error];
         }
         return nil;
     }
     
     if(value && ![value isKindOfClass: self])
     {
-        if([obj respondsToSelector: @selector(setError:)])
+        if([obj respondsToSelector: @selector(addError:)])
         {
             NSError *error = [NSError errorWithDomain: MAErrorReportingContainersErrorDomain code: MAErrorReportingContainersWrongValueType userInfo: nil];
-            [obj setError: error];
+            [obj addError: error];
         }
         return nil;
     }
