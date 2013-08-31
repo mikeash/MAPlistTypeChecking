@@ -15,6 +15,10 @@
 		C2848E1617D29E2000E08F82 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2848E1517D29E2000E08F82 /* Cocoa.framework */; };
 		C2848E2017D29E2000E08F82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2848E1E17D29E2000E08F82 /* InfoPlist.strings */; };
 		C2848E2317D29E2000E08F82 /* MAPlistTypeCheckingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */; };
+		C2848E2817D29F7A00E08F82 /* MAErrorReportingDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0217D18D9E00E08F82 /* MAErrorReportingDictionary.m */; };
+		C2848E2917D29F7A00E08F82 /* MAErrorReportingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0517D18DE500E08F82 /* MAErrorReportingObject.m */; };
+		C2848E2A17D29F7A00E08F82 /* MAErrorReportingArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0817D18F0E00E08F82 /* MAErrorReportingArray.m */; };
+		C2848E2B17D29F7A00E08F82 /* NSObject+MAErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0B17D18F8E00E08F82 /* NSObject+MAErrorReporting.m */; };
 		C2D571BD17D181B700913C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D571BC17D181B700913C6F /* Foundation.framework */; };
 		C2D571C017D181B800913C6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D571BF17D181B800913C6F /* main.m */; };
 /* End PBXBuildFile section */
@@ -249,6 +253,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2848E2317D29E2000E08F82 /* MAPlistTypeCheckingTests.m in Sources */,
+				C2848E2817D29F7A00E08F82 /* MAErrorReportingDictionary.m in Sources */,
+				C2848E2917D29F7A00E08F82 /* MAErrorReportingObject.m in Sources */,
+				C2848E2A17D29F7A00E08F82 /* MAErrorReportingArray.m in Sources */,
+				C2848E2B17D29F7A00E08F82 /* NSObject+MAErrorReporting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
