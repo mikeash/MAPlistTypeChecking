@@ -11,6 +11,10 @@
 		C2848E0617D18DE500E08F82 /* MAErrorReportingObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0517D18DE500E08F82 /* MAErrorReportingObject.m */; };
 		C2848E0917D18F0E00E08F82 /* MAErrorReportingArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0817D18F0E00E08F82 /* MAErrorReportingArray.m */; };
 		C2848E0C17D18F8E00E08F82 /* NSObject+MAErrorReporting.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E0B17D18F8E00E08F82 /* NSObject+MAErrorReporting.m */; };
+		C2848E1417D29E2000E08F82 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2848E1317D29E2000E08F82 /* SenTestingKit.framework */; };
+		C2848E1617D29E2000E08F82 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2848E1517D29E2000E08F82 /* Cocoa.framework */; };
+		C2848E2017D29E2000E08F82 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C2848E1E17D29E2000E08F82 /* InfoPlist.strings */; };
+		C2848E2317D29E2000E08F82 /* MAPlistTypeCheckingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */; };
 		C2D571BD17D181B700913C6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D571BC17D181B700913C6F /* Foundation.framework */; };
 		C2D571C017D181B800913C6F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D571BF17D181B800913C6F /* main.m */; };
 /* End PBXBuildFile section */
@@ -36,12 +40,31 @@
 		C2848E0817D18F0E00E08F82 /* MAErrorReportingArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAErrorReportingArray.m; sourceTree = "<group>"; };
 		C2848E0A17D18F8E00E08F82 /* NSObject+MAErrorReporting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MAErrorReporting.h"; sourceTree = "<group>"; };
 		C2848E0B17D18F8E00E08F82 /* NSObject+MAErrorReporting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MAErrorReporting.m"; sourceTree = "<group>"; };
+		C2848E1217D29E2000E08F82 /* MAPlistTypeCheckingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAPlistTypeCheckingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2848E1317D29E2000E08F82 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C2848E1517D29E2000E08F82 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		C2848E1817D29E2000E08F82 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C2848E1917D29E2000E08F82 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C2848E1A17D29E2000E08F82 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C2848E1D17D29E2000E08F82 /* MAPlistTypeCheckingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MAPlistTypeCheckingTests-Info.plist"; sourceTree = "<group>"; };
+		C2848E1F17D29E2000E08F82 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C2848E2117D29E2000E08F82 /* MAPlistTypeCheckingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAPlistTypeCheckingTests.h; sourceTree = "<group>"; };
+		C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAPlistTypeCheckingTests.m; sourceTree = "<group>"; };
 		C2D571B917D181B700913C6F /* MAPlistTypeChecking */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MAPlistTypeChecking; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D571BC17D181B700913C6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C2D571BF17D181B800913C6F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C2848E0E17D29E2000E08F82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2848E1417D29E2000E08F82 /* SenTestingKit.framework in Frameworks */,
+				C2848E1617D29E2000E08F82 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2D571B617D181B700913C6F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,10 +76,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2848E1717D29E2000E08F82 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2848E1817D29E2000E08F82 /* AppKit.framework */,
+				C2848E1917D29E2000E08F82 /* CoreData.framework */,
+				C2848E1A17D29E2000E08F82 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C2848E1B17D29E2000E08F82 /* MAPlistTypeCheckingTests */ = {
+			isa = PBXGroup;
+			children = (
+				C2848E2117D29E2000E08F82 /* MAPlistTypeCheckingTests.h */,
+				C2848E2217D29E2000E08F82 /* MAPlistTypeCheckingTests.m */,
+				C2848E1C17D29E2000E08F82 /* Supporting Files */,
+			);
+			path = MAPlistTypeCheckingTests;
+			sourceTree = "<group>";
+		};
+		C2848E1C17D29E2000E08F82 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C2848E1D17D29E2000E08F82 /* MAPlistTypeCheckingTests-Info.plist */,
+				C2848E1E17D29E2000E08F82 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		C2D571B017D181B700913C6F = {
 			isa = PBXGroup;
 			children = (
 				C2D571BE17D181B700913C6F /* MAPlistTypeChecking */,
+				C2848E1B17D29E2000E08F82 /* MAPlistTypeCheckingTests */,
 				C2D571BB17D181B700913C6F /* Frameworks */,
 				C2D571BA17D181B700913C6F /* Products */,
 			);
@@ -66,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				C2D571B917D181B700913C6F /* MAPlistTypeChecking */,
+				C2848E1217D29E2000E08F82 /* MAPlistTypeCheckingTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				C2D571BC17D181B700913C6F /* Foundation.framework */,
+				C2848E1317D29E2000E08F82 /* SenTestingKit.framework */,
+				C2848E1517D29E2000E08F82 /* Cocoa.framework */,
+				C2848E1717D29E2000E08F82 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,6 +154,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C2848E1117D29E2000E08F82 /* MAPlistTypeCheckingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2848E2517D29E2000E08F82 /* Build configuration list for PBXNativeTarget "MAPlistTypeCheckingTests" */;
+			buildPhases = (
+				C2848E0D17D29E2000E08F82 /* Sources */,
+				C2848E0E17D29E2000E08F82 /* Frameworks */,
+				C2848E0F17D29E2000E08F82 /* Resources */,
+				C2848E1017D29E2000E08F82 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MAPlistTypeCheckingTests;
+			productName = MAPlistTypeCheckingTests;
+			productReference = C2848E1217D29E2000E08F82 /* MAPlistTypeCheckingTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		C2D571B817D181B700913C6F /* MAPlistTypeChecking */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2D571C717D181B800913C6F /* Build configuration list for PBXNativeTarget "MAPlistTypeChecking" */;
@@ -136,11 +211,47 @@
 			projectRoot = "";
 			targets = (
 				C2D571B817D181B700913C6F /* MAPlistTypeChecking */,
+				C2848E1117D29E2000E08F82 /* MAPlistTypeCheckingTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		C2848E0F17D29E2000E08F82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2848E2017D29E2000E08F82 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C2848E1017D29E2000E08F82 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		C2848E0D17D29E2000E08F82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2848E2317D29E2000E08F82 /* MAPlistTypeCheckingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C2D571B517D181B700913C6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,7 +266,40 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		C2848E1E17D29E2000E08F82 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2848E1F17D29E2000E08F82 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		C2848E2617D29E2000E08F82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				INFOPLIST_FILE = "MAPlistTypeCheckingTests/MAPlistTypeCheckingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C2848E2717D29E2000E08F82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				INFOPLIST_FILE = "MAPlistTypeCheckingTests/MAPlistTypeCheckingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		C2D571C517D181B800913C6F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -232,6 +376,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C2848E2517D29E2000E08F82 /* Build configuration list for PBXNativeTarget "MAPlistTypeCheckingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2848E2617D29E2000E08F82 /* Debug */,
+				C2848E2717D29E2000E08F82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		C2D571B417D181B700913C6F /* Build configuration list for PBXProject "MAPlistTypeChecking" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
