@@ -25,7 +25,7 @@
 {
     [super setUp];
     
-    _dict = [[MAErrorReportingDictionary alloc] initWithParent: nil dictionary: @{
+    _dict = [[MAErrorReportingDictionary alloc] initWithDictionary: @{
         @"string" : @"abc",
         @"number" : @42,
         @"dictionary" : @{
@@ -37,10 +37,17 @@
 
 - (void)assertErrorCode: (NSInteger)code
 {
+    [self assertErrorCode: code keyPath: nil];
+}
+
+- (void)assertErrorCode: (NSInteger)code keyPath: (NSArray *)keyPath
+{
     NSError *error = [_dict error];
     STAssertNotNil(error, @"Error should exist");
     STAssertEqualObjects([error domain], MAErrorReportingContainersErrorDomain, @"Error does not have the proper domain");
     STAssertEquals([error code], code, @"Error has incorrect code");
+    if(keyPath)
+        STAssertEqualObjects([error userInfo][MAErrorReportingContainersKeyPathUserInfoKey], keyPath, @"Error does not have correct key path");
     [_dict setError: nil];
 }
 
@@ -160,6 +167,30 @@
         STAssertEquals([error code], code, @"Incorrect error code at index %d error is %@, errors are %@", i, error, errors);
         i++;
     }
+}
+
+- (void)testKeyPaths
+{
+    [NSString ma_castRequiredObject: _dict[@"doesnotexist"]];
+    [self assertErrorCode: MAErrorReportingContainersMissingRequiredKey keyPath: @[ @"doesnotexist" ]];
+    
+    [NSNumber ma_castRequiredObject: _dict[@"string"]];
+    [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"string" ]];
+    
+    [NSNumber ma_castOptionalObject: _dict[@"string"]];
+    [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"string" ]];
+    
+    [NSString ma_castRequiredObject: _dict[@"dictionary"][@"doesnotexist"]];
+    [self assertErrorCode: MAErrorReportingContainersMissingRequiredKey keyPath: @[ @"dictionary", @"doesnotexist"]];
+    
+    [NSNumber ma_castRequiredObject: _dict[@"dictionary"][@"string"]];
+    [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"dictionary", @"string" ]];
+    
+    [NSNumber ma_castRequiredObject: _dict[@"dictionary"][@"array"][0]];
+    [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"dictionary", @"array", @0 ]];
+    
+    [NSString ma_castRequiredObject: _dict[@"dictionary"][@"array"][1]];
+    [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"dictionary", @"array", @1 ]];
 }
 
 @end

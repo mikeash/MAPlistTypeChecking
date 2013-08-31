@@ -12,6 +12,7 @@
 
 
 NSString * const MAErrorReportingContainersErrorDomain = @"MAErrorReportingContainersErrorDomain";
+NSString * const MAErrorReportingContainersKeyPathUserInfoKey = @"MAErrorReportingContainersKeyPathUserInfoKey";
 
 @implementation NSObject (MAErrorReporting)
 
@@ -53,6 +54,31 @@ NSString * const MAErrorReportingContainersErrorDomain = @"MAErrorReportingConta
 + (instancetype)ma_castOptionalObject: (id)obj
 {
     return [self ma_cast: obj required: NO];
+}
+
+@end
+
+@implementation NSError (MAErrorReporting)
+
+- (NSError *)ma_errorByPrependingKey: (id)key
+{
+    if(!key)
+        return self;
+    
+    NSMutableDictionary *userInfo = [[self userInfo] mutableCopy];
+    if(!userInfo)
+        userInfo = [NSMutableDictionary dictionary];
+    
+    NSArray *keyPath = userInfo[MAErrorReportingContainersKeyPathUserInfoKey];
+    if(!keyPath)
+        keyPath = @[];
+    
+    NSMutableArray *newKeyPath = [keyPath mutableCopy];
+    [newKeyPath insertObject: key atIndex: 0];
+    
+    userInfo[MAErrorReportingContainersKeyPathUserInfoKey] = newKeyPath;
+    
+    return [NSError errorWithDomain: [self domain] code: [self code] userInfo: userInfo];
 }
 
 @end

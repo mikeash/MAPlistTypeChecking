@@ -10,11 +10,14 @@
 
 @interface MAErrorReportingDictionary : NSDictionary
 
-- (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary;
+- (id)initWithDictionary: (NSDictionary *)dictionary;
+- (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary key: (id)key;
 
 @property (nonatomic) NSError *error;
 
 - (void)addError: (NSError *)error;
 - (NSArray *)errors;
+
+@property (readonly) id key;
 
 @end

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString * const MAErrorReportingContainersErrorDomain;
+extern NSString * const MAErrorReportingContainersKeyPathUserInfoKey;
 
 enum {
     MAErrorReportingContainersMissingRequiredKey,
@@ -20,5 +21,11 @@ enum {
 
 + (instancetype)ma_castRequiredObject: (id)obj;
 + (instancetype)ma_castOptionalObject: (id)obj;
+
+@end
+
+@interface NSError (MAErrorReporting)
+
+- (NSError *)ma_errorByPrependingKey: (id)key;
 
 @end

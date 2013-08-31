@@ -10,6 +10,7 @@
 
 #import "MAErrorReportingDictionary.h"
 #import "MAErrorReportingObject.h"
+#import "NSObject+MAErrorReporting.h"
 
 
 @implementation MAErrorReportingArray {
@@ -18,12 +19,13 @@
     NSMutableArray *_errors;
 }
 
-- (id)initWithParent: (id)parent array: (NSArray *)array
+- (id)initWithParent: (id)parent array: (NSArray *)array key: (id)key
 {
     if((self = [super init]))
     {
         _parent = parent;
         _innerArray = array;
+        _key = key;
     }
     return self;
 }
@@ -35,20 +37,24 @@
 
 - (id)objectAtIndex: (NSUInteger)index
 {
-    return [MAErrorReportingObject wrapObject: [_innerArray objectAtIndex: index] parent: self];
+    return [MAErrorReportingObject wrapObject: [_innerArray objectAtIndex: index] parent: self key: @(index)];
 }
 
 - (void)setError: (NSError *)error
 {
+    error = [error ma_errorByPrependingKey: _key];
     [_parent setError: error];
     _errors = [NSMutableArray arrayWithObjects: error, nil];
 }
 
-- (NSError *)error {
+- (NSError *)error
+{
     return [_errors lastObject];
 }
 
-- (void)addError: (NSError *)error {
+- (void)addError: (NSError *)error
+{
+    error = [error ma_errorByPrependingKey: _key];
     [_parent addError: error];
     if(!_errors)
         _errors = [NSMutableArray array];

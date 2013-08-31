@@ -9,6 +9,7 @@
 #import "MAErrorReportingDictionary.h"
 
 #import "MAErrorReportingObject.h"
+#import "NSObject+MAErrorReporting.h"
 
 
 @implementation MAErrorReportingDictionary {
@@ -17,12 +18,18 @@
     NSMutableArray *_errors;
 }
 
-- (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary
+- (id)initWithDictionary: (NSDictionary *)dictionary
+{
+    return [self initWithParent: nil dictionary: dictionary key: nil];
+}
+
+- (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary key: (id)key
 {
     if((self = [super init]))
     {
         _parent = parent;
         _innerDictionary = dictionary;
+        _key = key;
     }
     return self;
 }
@@ -34,7 +41,7 @@
 
 - (id)objectForKey: (id)key
 {
-    return [MAErrorReportingObject wrapObject: [_innerDictionary objectForKey: key] parent: self];
+    return [MAErrorReportingObject wrapObject: [_innerDictionary objectForKey: key] parent: self key: key];
 }
 
 - (NSEnumerator *)keyEnumerator
@@ -44,15 +51,19 @@
 
 - (void)setError: (NSError *)error
 {
+    error = [error ma_errorByPrependingKey: _key];
     [_parent setError: error];
     _errors = [NSMutableArray arrayWithObjects: error, nil];
 }
 
-- (NSError *)error {
+- (NSError *)error
+{
     return [_errors lastObject];
 }
 
-- (void)addError: (NSError *)error {
+- (void)addError: (NSError *)error
+{
+    error = [error ma_errorByPrependingKey: _key];
     [_parent addError: error];
     if(!_errors)
         _errors = [NSMutableArray array];
