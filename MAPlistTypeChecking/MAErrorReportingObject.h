@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface MAErrorReportingObject : NSObject
+@interface MAErrorReportingObject : NSProxy
 
 + (id)wrapObject: (id)object parent: (id)parent key: (id)key;
 
