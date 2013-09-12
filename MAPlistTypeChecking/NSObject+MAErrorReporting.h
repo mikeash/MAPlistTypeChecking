@@ -22,6 +22,8 @@ enum {
 + (instancetype)ma_castRequiredObject: (id)obj;
 + (instancetype)ma_castOptionalObject: (id)obj;
 
+- (BOOL)ma_isErrorReportingObject;
+
 @end
 
 @interface NSError (MAErrorReporting)

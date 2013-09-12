@@ -31,7 +31,9 @@
         @"dictionary" : @{
             @"string" : @"abcdef",
             @"array" : @[ @"a", @2 ]
-        }
+        },
+        @"data" : [@"hello" dataUsingEncoding: NSUTF8StringEncoding],
+        @"date" : [NSDate dateWithTimeIntervalSince1970: 42],
     }];
 }
 
@@ -191,6 +193,38 @@
     
     [NSString ma_castRequiredObject: _dict[@"dictionary"][@"array"][1]];
     [self assertErrorCode: MAErrorReportingContainersWrongValueType keyPath: @[ @"dictionary", @"array", @1 ]];
+}
+
+- (void)testUncastedObjects
+{
+    NSString *string = _dict[@"string"];
+    STAssertEqualObjects(string, @"abc", @"String object doesn't match");
+    STAssertEqualObjects(@"abc", string, @"String object doesn't match");
+    STAssertEqualObjects([string stringByAppendingString: @"def"], @"abcdef", @"Couldn't append strings");
+    STAssertEqualObjects([@"def" stringByAppendingString: string], @"defabc", @"Couldn't append strings");
+    NSMutableString *mutableString = [string mutableCopy];
+    [mutableString appendString: string];
+    STAssertEqualObjects(mutableString, @"abcabc", @"Mutable string ended up wrong");
+    
+    NSNumber *number = _dict[@"number"];
+    STAssertEqualObjects(number, @42, @"Number object doesn't match");
+    STAssertEqualObjects(@42, number, @"Number object doesn't match");
+    STAssertEquals([number intValue], 42, @"Number value doesn't match");
+    STAssertEquals([number floatValue], 42.0f, @"Number value doesn't match");
+    STAssertEquals([number objCType][0], @encode(int)[0], @"Number value has wrong objCType");
+    int numberValue;
+    [number getValue: &numberValue];
+    STAssertEquals(numberValue, 42, @"Number value doesn't match");
+    
+    NSData *data = _dict[@"data"];
+    STAssertEqualObjects(data, [@"hello" dataUsingEncoding: NSUTF8StringEncoding], @"Data object doesn't match");
+    STAssertEqualObjects([@"hello" dataUsingEncoding: NSUTF8StringEncoding], data, @"Data object doesn't match");
+    STAssertTrue(memcmp([data bytes], "hello", 5) == 0, @"Data contents don't match");
+    
+    NSDate *date = _dict[@"date"];
+    STAssertEqualObjects(date, [NSDate dateWithTimeIntervalSince1970: 42], @"Date object doesn't match");
+    STAssertEqualObjects([NSDate dateWithTimeIntervalSince1970: 42], date, @"Date object doesn't match");
+    STAssertEquals([date timeIntervalSince1970], 42.0, @"Date value doesn't match");
 }
 
 @end

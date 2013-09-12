@@ -19,7 +19,7 @@ NSString * const MAErrorReportingContainersKeyPathUserInfoKey = @"MAErrorReporti
 + (instancetype)ma_cast: (id)obj required: (BOOL)required
 {
     id value = obj;
-    if([obj isKindOfClass: [MAErrorReportingObject class]])
+    if([obj ma_isErrorReportingObject])
         value = [obj wrappedObject];
     
     if(required && !value)
@@ -54,6 +54,10 @@ NSString * const MAErrorReportingContainersKeyPathUserInfoKey = @"MAErrorReporti
 + (instancetype)ma_castOptionalObject: (id)obj
 {
     return [self ma_cast: obj required: NO];
+}
+
+- (BOOL)ma_isErrorReportingObject {
+    return NO;
 }
 
 @end

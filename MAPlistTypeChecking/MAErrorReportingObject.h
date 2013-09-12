@@ -35,6 +35,11 @@
         return self; \
     } \
     \
+    - (id)forwardingTargetForSelector: (SEL)sel \
+    { \
+        return _wrappedObject; \
+    } \
+    \
     - (void)setError: (NSError *)error \
     { \
         error = [error ma_errorByPrependingKey: _key]; \
@@ -59,11 +64,48 @@
     - (NSArray *)errors \
     { \
         return _errors; \
+    } \
+    \
+    - (BOOL)ma_isErrorReportingObject { \
+        return YES; \
     }
+
+#define MA_ERROR_REPORTING_AUTO_CLUSTER_FORWARD \
+    + (void)initialize \
+    { \
+        MAErrorReportingClassFixup(self); \
+    }
+
+
+void MAErrorReportingClassFixup(Class class);
 
 @interface MAErrorReportingObject : NSObject
 
 + (id)wrapObject: (id)object parent: (id)parent key: (id)key;
+
+MA_ERROR_REPORTING_INTERFACE
+
+@end
+
+@interface MAErrorReportingString : NSString
+
+MA_ERROR_REPORTING_INTERFACE
+
+@end
+
+@interface MAErrorReportingNumber : NSNumber
+
+MA_ERROR_REPORTING_INTERFACE
+
+@end
+
+@interface MAErrorReportingData : NSData
+
+MA_ERROR_REPORTING_INTERFACE
+
+@end
+
+@interface MAErrorReportingDate : NSDate
 
 MA_ERROR_REPORTING_INTERFACE
 
