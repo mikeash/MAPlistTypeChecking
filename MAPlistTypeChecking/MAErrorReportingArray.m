@@ -14,56 +14,19 @@
 
 
 @implementation MAErrorReportingArray {
-    id _parent;
-    NSArray *_innerArray;
-    NSMutableArray *_errors;
+    MA_ERROR_REPORTING_IVARS
 }
 
-- (id)initWithParent: (id)parent array: (NSArray *)array key: (id)key
-{
-    if((self = [super init]))
-    {
-        _parent = parent;
-        _innerArray = array;
-        _key = key;
-    }
-    return self;
-}
+MA_ERROR_REPORTING_METHODS
 
 - (NSUInteger)count
 {
-    return [_innerArray count];
+    return [_wrappedObject count];
 }
 
 - (id)objectAtIndex: (NSUInteger)index
 {
-    return [MAErrorReportingObject wrapObject: [_innerArray objectAtIndex: index] parent: self key: @(index)];
-}
-
-- (void)setError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent setError: error];
-    _errors = [NSMutableArray arrayWithObjects: error, nil];
-}
-
-- (NSError *)error
-{
-    return [_errors lastObject];
-}
-
-- (void)addError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent addError: error];
-    if(!_errors)
-        _errors = [NSMutableArray array];
-    [_errors addObject: error];
-}
-
-- (NSArray *)errors
-{
-    return _errors;
+    return [MAErrorReportingObject wrapObject: [_wrappedObject objectAtIndex: index] parent: self key: @(index)];
 }
 
 @end

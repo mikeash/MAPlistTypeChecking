@@ -14,55 +14,20 @@
 
 
 @implementation MAErrorReportingObject {
-    id _parent;
-    NSMutableArray *_errors;
+    MA_ERROR_REPORTING_IVARS
 }
 
 + (id)wrapObject: (id)object parent: (id)parent key: (id)key
 {
+    Class class = self;
     if([object isKindOfClass: [NSArray class]])
-        return [[MAErrorReportingArray alloc] initWithParent: parent array: object key: key];
-    if([object isKindOfClass: [NSDictionary class]])
-        return [[MAErrorReportingDictionary alloc] initWithParent: parent dictionary: object key: key];
+        class = [MAErrorReportingArray class];
+    else if([object isKindOfClass: [NSDictionary class]])
+        class = [MAErrorReportingDictionary class];
     
-    return [[self alloc] initWithParent: parent object: object key: key];
+    return [[class alloc] initWithParent: parent object: object key: key];
 }
 
-- (id)initWithParent: (id)parent object: (id)object key: (id)key
-{
-    if((self = [super init]))
-    {
-        _parent = parent;
-        _wrappedObject = object;
-        _key = key;
-    }
-    return self;
-}
-
-- (void)setError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent setError: error];
-    _errors = [NSMutableArray arrayWithObjects: error, nil];
-}
-
-- (NSError *)error
-{
-    return [_errors lastObject];
-}
-
-- (void)addError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent addError: error];
-    if(!_errors)
-        _errors = [NSMutableArray array];
-    [_errors addObject: error];
-}
-
-- (NSArray *)errors
-{
-    return _errors;
-}
+MA_ERROR_REPORTING_METHODS
 
 @end

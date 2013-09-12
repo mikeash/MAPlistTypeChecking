@@ -13,66 +13,29 @@
 
 
 @implementation MAErrorReportingDictionary {
-    id _parent;
-    NSDictionary *_innerDictionary;
-    NSMutableArray *_errors;
+    MA_ERROR_REPORTING_IVARS
 }
 
 - (id)initWithDictionary: (NSDictionary *)dictionary
 {
-    return [self initWithParent: nil dictionary: dictionary key: nil];
+    return [self initWithParent: nil object: dictionary key: nil];
 }
 
-- (id)initWithParent: (id)parent dictionary: (NSDictionary *)dictionary key: (id)key
-{
-    if((self = [super init]))
-    {
-        _parent = parent;
-        _innerDictionary = dictionary;
-        _key = key;
-    }
-    return self;
-}
+MA_ERROR_REPORTING_METHODS
 
 - (NSUInteger)count
 {
-    return [_innerDictionary count];
+    return [_wrappedObject count];
 }
 
 - (id)objectForKey: (id)key
 {
-    return [MAErrorReportingObject wrapObject: [_innerDictionary objectForKey: key] parent: self key: key];
+    return [MAErrorReportingObject wrapObject: [_wrappedObject objectForKey: key] parent: self key: key];
 }
 
 - (NSEnumerator *)keyEnumerator
 {
-    return [_innerDictionary keyEnumerator];
-}
-
-- (void)setError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent setError: error];
-    _errors = [NSMutableArray arrayWithObjects: error, nil];
-}
-
-- (NSError *)error
-{
-    return [_errors lastObject];
-}
-
-- (void)addError: (NSError *)error
-{
-    error = [error ma_errorByPrependingKey: _key];
-    [_parent addError: error];
-    if(!_errors)
-        _errors = [NSMutableArray array];
-    [_errors addObject: error];
-}
-
-- (NSArray *)errors
-{
-    return _errors;
+    return [_wrappedObject keyEnumerator];
 }
 
 @end

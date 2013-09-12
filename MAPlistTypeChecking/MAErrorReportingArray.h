@@ -8,15 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "MAErrorReportingObject.h"
+
+
 @interface MAErrorReportingArray : NSArray
 
-- (id)initWithParent: (id)parent array: (NSArray *)array key: (id)key;
-
-@property (nonatomic) NSError *error;
-
-- (void)addError: (NSError *)error;
-- (NSArray *)errors;
-
-@property (readonly) id key;
+MA_ERROR_REPORTING_INTERFACE
 
 @end
