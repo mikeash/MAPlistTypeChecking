@@ -36,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C22ED40517E28F6600F9D7F2 /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
 		C2848E0117D18D9E00E08F82 /* MAErrorReportingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAErrorReportingDictionary.h; sourceTree = "<group>"; };
 		C2848E0217D18D9E00E08F82 /* MAErrorReportingDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MAErrorReportingDictionary.m; sourceTree = "<group>"; };
 		C2848E0417D18DE500E08F82 /* MAErrorReportingObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAErrorReportingObject.h; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		C2D571B017D181B700913C6F = {
 			isa = PBXGroup;
 			children = (
+				C22ED40517E28F6600F9D7F2 /* README.markdown */,
 				C2D571BE17D181B700913C6F /* MAPlistTypeChecking */,
 				C2848E1B17D29E2000E08F82 /* MAPlistTypeCheckingTests */,
 				C2D571BB17D181B700913C6F /* Frameworks */,
@@ -389,6 +391,7 @@
 				C2848E2717D29E2000E08F82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C2D571B417D181B700913C6F /* Build configuration list for PBXProject "MAPlistTypeChecking" */ = {
 			isa = XCConfigurationList;
