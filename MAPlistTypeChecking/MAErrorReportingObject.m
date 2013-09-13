@@ -58,6 +58,11 @@ void MAErrorReportingClassFixup(Class class)
     return [[class alloc] initWithParent: parent object: object key: key];
 }
 
++ (id)wrapObject: (id)object
+{
+    return [self wrapObject: object parent: nil key: nil];
+}
+
 MA_ERROR_REPORTING_METHODS
 
 @end

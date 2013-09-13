@@ -82,6 +82,7 @@ void MAErrorReportingClassFixup(Class class);
 @interface MAErrorReportingObject : NSObject
 
 + (id)wrapObject: (id)object parent: (id)parent key: (id)key;
++ (id)wrapObject: (id)object;
 
 MA_ERROR_REPORTING_INTERFACE
 

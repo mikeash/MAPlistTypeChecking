@@ -25,7 +25,7 @@
 {
     [super setUp];
     
-    _dict = [[MAErrorReportingDictionary alloc] initWithDictionary: @{
+    _dict = [MAErrorReportingObject wrapObject: @{
         @"string" : @"abc",
         @"number" : @42,
         @"dictionary" : @{

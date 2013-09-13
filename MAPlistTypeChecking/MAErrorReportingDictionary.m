@@ -16,11 +16,6 @@
     MA_ERROR_REPORTING_IVARS
 }
 
-- (id)initWithDictionary: (NSDictionary *)dictionary
-{
-    return [self initWithParent: nil object: dictionary key: nil];
-}
-
 MA_ERROR_REPORTING_METHODS
 
 - (NSUInteger)count

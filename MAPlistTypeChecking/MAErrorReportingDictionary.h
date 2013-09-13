@@ -13,8 +13,6 @@
 
 @interface MAErrorReportingDictionary : NSDictionary
 
-- (id)initWithDictionary: (NSDictionary *)dictionary;
-
 MA_ERROR_REPORTING_INTERFACE
 
 @end
